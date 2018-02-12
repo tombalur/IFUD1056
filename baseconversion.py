@@ -18,7 +18,7 @@ def convertfrombase10_1(number, base):
         if number < base ** (power + 1):
             break
         power += 1
-    # Looping through power, calculating result.
+    # Looping through power, calculating result
     while power >= 0:
         divisionresult = number // base ** power
         number = number - (base ** power * divisionresult)
@@ -37,7 +37,7 @@ def convertfrombase10_2(number, base, result=''):
     remainder = number % base
     result = str(remainder) + result
     number = number // base
-    # If floor division reaches 0 return value, else continue recursion.
+    # If floor division reaches 0 return value, else continue recursion
     if number == 0:
         return int(result)
     else:
@@ -64,7 +64,7 @@ def converttobase10(number, base):
 
 # Calculating solution 1
 base = 5
-number = 1455654
+number = 223
 starttime = time.time()
 result = convertfrombase10_1(number, base)
 endtime = time.time()
@@ -82,7 +82,7 @@ print('Execution time ' + str((endtime-starttime) * 1000) + ' ms.\n')
 
 # Calculating solution 3
 starttime = time.time()
-number = 333040104
+number = 1343
 result = converttobase10(number, base)
 endtime = time.time()
 print('Solution 3, convert to base10:')

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#File name: estimatePI.py Assignment 1
+#File name: estimatepi.py
 #Author: Tom Are Tørum
 #Submission: Assignement 1
 from math import sqrt
