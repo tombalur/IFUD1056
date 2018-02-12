@@ -6,7 +6,7 @@ from math import sqrt
 from time import time
 def archimedespi(iterations):
     """
-        Estimates pi using Archmedes method
+        Estimates pi using Archimedes method
     
     Args:
         param1 (int) Number of iterations.
