@@ -1,40 +1,43 @@
+#!/usr/bin/python3
+# File name: listingprimes.py
+# Author: Tom Are Tørum
+# Submission: Assignment 3
+# https://en.wikipedia.org/wiki/Primality_test
+
+
 def isprime(number):
-    if number <= 1:
+    '''Primality test
+    :param int number: Number to be tested
+    :return Bool
+    '''
+    if number < 2:
         return False
-    elif number <= 3:
+    if number <= 3:
         return True
-    elif number % 2 == 0 or number % 3 == 0:
+    if number % 2 == 0:
         return False
-    counter = 5
-    while counter ** 2 <= number:
-        if number % counter == 0 or number % (counter + 2) == 0:
+    i = 3
+    while i * i <= number:
+        if number % i == 0:
             return False
-        counter += 1
+        i = i + 2
     return True
 
 
-def isprimefermat(number):
-    randomnumber = 5
-    if number <= 1:
-        return False
-    elif number <= 3:
-        return True
-    elif number % 2 == 0 or number % 3 == 0:
-        return False
-    elif randomnumber ** number % number == 1:
-        return True
-    return False
-
-
-def findprimes(number):
+def findprimes(amount):
+    '''Find n amount of primes
+    :param int amount: The amount of primes you want returned
+    :return tup primesfound:
+    '''
     primesfound = ()
     counter = 0
-    while len(primesfound) < number:
-        if isprimefermat(counter):
+    while len(primesfound) < amount:
+        if isprime(counter):
             primesfound += (counter,)
         counter += 1
     return primesfound
 
 
-#primesfound = findprimes(5)
-#print(primesfound)
+primesfound = findprimes(amount=1000)
+for i in range(len(primesfound)):
+    print(primesfound[i])
