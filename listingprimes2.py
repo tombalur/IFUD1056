@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# File name: listingprimes.py
+# File name: listingprimes2.py
 # Author: Tom Are Tørum
 # Submission: Assignment 3
 # https://en.wikipedia.org/wiki/Primality_test
@@ -8,7 +8,7 @@
 def isprime(number):
     '''Primality test
     :param int number: Number to be tested
-    :return Bool
+    :return bool
     '''
     if number < 2:
         return False
