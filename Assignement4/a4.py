@@ -25,8 +25,13 @@ def getwordfreqs(filename):
     :return dict wordcounter: returns counter (dict) sorted descending.
     '''
     wordcounter = collections.Counter()
-    #using regex \w+ to get only alphanumeric characters
-    words = re.findall(r'\w+', open(filename).read().lower())
+    # Open txtfile
+    txtfile = open(filename)
+    # open file and use regex \w+ to get only alphanumeric characters
+    words = re.findall(r'\w+', txtfile.read().lower())
+    # Originally used example from python doc 8.3.2 Counter objects, but added
+    # a close since INGInious did not accept file open without close.
+    txtfile.close()
     for word in words:
         wordcounter[word] += 1
     return wordcounter
@@ -39,15 +44,15 @@ def getcommonwords(dicts):
     '''
     commonwords = []
     commontest = True
-    #Taking the ten most common keys in first dict and converting to list
+    # Taking the ten most common keys in first dict and converting to list
     wordlist = list(dict(dicts[0].most_common(10)).keys())
     for word in wordlist:
         for worddict in dicts:
-            #Checking only top ten words
+            # Checking only top ten words
             if word not in dict(worddict.most_common(10)):
                 commontest = False
                 break
-        #Adding word if its found in al dictionaries.
+        # Adding word if its found in al dictionaries.
         if commontest:
             commonwords.append(word)
         commontest = True

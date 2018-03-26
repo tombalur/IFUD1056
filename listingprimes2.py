@@ -3,7 +3,7 @@
 # Author: Tom Are Tørum
 # Submission: Assignment 3
 # https://en.wikipedia.org/wiki/Primality_test
-
+import time
 
 def isprime(number):
     '''Primality test
@@ -27,17 +27,17 @@ def isprime(number):
 def findprimes(amount):
     '''Find n amount of primes
     :param int amount: The amount of primes you want returned
-    :return tup primesfound:
+    :return None:
     '''
     primesfound = ()
     counter = 0
-    while len(primesfound) < amount:
+    prime = 0
+    while prime < amount:
         if isprime(counter):
-            primesfound += (counter,)
+            print(counter)
+            prime += 1
         counter += 1
-    return primesfound
+    return None
 
 
 primesfound = findprimes(amount=1000)
-for i in range(len(primesfound)):
-    print(primesfound[i])
