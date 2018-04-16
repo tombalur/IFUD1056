@@ -4,30 +4,17 @@ import pylab
 
 
 class Location(object):
-    '''Location of person in field'''
     def __init__(self, x, y):
         self.x = float(x)
         self.y = float(y)
 
     def move(self, xc, yc):
-        '''Move person to new location
-        :param float xc: Distance X
-        :param float yc: Distance Y
-        :return Location
-        '''
         return Location(self.x + float(xc), self.y + float(yc))
 
     def getCoords(self):
-        '''Get postion of person
-        :return tuple
-        '''
         return self.x, self.y
 
     def getDist(self, other):
-        '''Get distance from start
-        :param Location other:
-        :return float
-        '''
         ox, oy = other.getCoords()
         xDist = self.x - ox
         yDist = self.y - oy
@@ -35,7 +22,6 @@ class Location(object):
 
 
 class CompassPt(object):
-    '''Find which direction the person moves'''
     possibles = ('N', 'S', 'E', 'W')
 
     def __init__(self, pt):
@@ -45,10 +31,6 @@ class CompassPt(object):
             raise ValueError('in CompassPt.__init__')
 
     def move(self, dist):
-        '''Find movement in the X,Y axis
-        :param dist: Distance of movement
-        :return tuple: Direction in the X,Y axis
-        '''
         if self.pt == 'N':
             return (0, dist)
         elif self.pt == 'S':
@@ -78,12 +60,6 @@ class Field(object):
         return self.drunk
 
 
-class newField(object):
-    def __init__(self, fieldsizex, fieldsizey, steplength):
-        self.fieldsizex = fieldsizex / steplength
-        self.fielfsizey = fieldsizey / steplength
-
-
 class Drunk(object):
     def __init__(self, name):
         self.name = name
@@ -107,13 +83,10 @@ class Drunk(object):
 
 
 drunk = Drunk('Homer Simpson')
-drunk2 = Drunk('Kjell')
 for i in range(3):
     f = Field(drunk, Location(0, 0))
     distances = Drunk.performTrial(500, f)
-    distances2 = Drunk.performTrial(500,f)
     pylab.plot(distances)
-    pylab.plot(distances2)
 pylab.title('Homer\'s Random Walk')
 pylab.xlabel('Time')
 pylab.ylabel('Distance from Origin')
@@ -144,5 +117,5 @@ def ansQuest(maxTime, numTrials):
     pylab.title('Average Distance vs. Time (' + str(len(distLists)) + ' trials)')
 
 
-#ansQuest(500, 300)
+ansQuest(500, 300)
 pylab.show()
